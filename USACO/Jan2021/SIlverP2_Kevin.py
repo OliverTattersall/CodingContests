@@ -22,7 +22,7 @@ for i in range(q):
 
     places.append(item2)
 
-print(places, segments)
+# print(places, segments)
 
 for i in range(q):
     sum = 0
@@ -33,11 +33,25 @@ for i in range(q):
         
         past=[0 for i in range(len(places[i][j]))]
         past[0]=1
-        
+        letters=set([temp[0]])
         for k in range(1, len(places[i][j])):
-            if ord(places[i][j][k])<=ord(places[i][j][k-1]):
-                past[k]=past[k-1]
-            elif ord(temp[k])>ord(temp[k-1]):
+            if temp[k] in letters:
+                if ord(temp[k])==ord(temp[k-1]):
+                    past[k]=past[k-1]
+                elif ord(temp[k])>ord(temp[k-1]):
+                    past[k]=past[k-1]+1
+                else:
+                    last = temp[k-1]
+                    l = k-1
+                    while ord(temp[k])<ord(last):
+                        l = l-1
+                        last = temp[l]
+                    if last == temp[k]:
+                        past[k]=past[k-1]
+                    else:
+                        past[k]=past[k-1]+1
+            else:
                 past[k]=past[k-1]+1
+                letters.add(temp[k])
         sum+=past[-1]
     print(sum)
