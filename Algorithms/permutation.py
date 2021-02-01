@@ -1,14 +1,18 @@
 from itertools import permutations 
 
 
-# word=input()
+# lst = ["1", "2", "3"]
+lst = [i for i in range(3)]
 
-# def permutiter(word):
-#     return list(permutations(list(word)))
+#returns a list of tuples containing n items, where n is length of original list or string
+def permutiter(lst):
+    return list(permutations(list(lst)))
 
-# print(permutiter(word))
+print(permutiter(lst))
 
 permuts=[]
+
+#only works on strings. returns list of string permutations
 def permutationsNoIter(lst, head, tail=""):
     if len(head) == 0:
         lst.append(tail)
@@ -16,5 +20,25 @@ def permutationsNoIter(lst, head, tail=""):
         for i in range(len(head)):
             permutationsNoIter(permuts, head[:i] + head[i+1:], tail + head[i])
 
-permutationsNoIter(permuts, ['1','2','3', '4'])
+# permutationsNoIter(permuts, lst)
 print(permuts)
+
+#returns 2d list with each permutation being broken up into lists. applies yield, which can be used to add create generator objects. 
+def all_perms(elements, lst = []):
+
+    if len(elements) <=1:
+        # lst.append(elements)
+        return [elements]
+        # yield elements
+    else:
+
+        for perm in all_perms(elements[1:]):
+
+            # print(perm, elements)
+            for i in range(len(elements)):
+                lst.append(perm[:i]+elements[0:1]+perm[i:])
+                # print(perm[:i] + elements[0:1]+perm[i:])
+                # yield perm[:i] + elements[0:1] + perm[i:]
+        return lst
+
+print(list(all_perms(lst, [])))
