@@ -3,9 +3,10 @@ options=[]
 for i in range(times):
     options.append(input().split())
 
-print(options)
+# print(options)
 
 for i in range(len(options)):
-    if len(options[i][2])>=10:
-        if int(options[i][2][-10:])>2:
-            print(options[i])
+    if int(options[i][0])*int(options[i][1]) == int(options[i][2]):
+        print("POSSIBLE DOUBLE SIGMA")
+    else:
+        print("16 BIT S/W ONLY")
