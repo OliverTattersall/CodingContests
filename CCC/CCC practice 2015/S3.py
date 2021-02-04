@@ -9,7 +9,7 @@ sum=0
 for i in range(p):
     planes.append(int(input()))
 
-
+print()
 
 
 
