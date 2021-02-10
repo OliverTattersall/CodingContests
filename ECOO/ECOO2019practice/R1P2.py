@@ -1,5 +1,5 @@
 #loops through all 10 test cases
-for _ in range(1):
+for _ in range(10):
 
     first = input().split()
 
@@ -65,7 +65,7 @@ for _ in range(1):
         for key in keys:
 
             #creates a new list of the keys in the child dictionary for each letter 
-            # 
+            # this will allow us to go through each value in the child dictionary of rules
             #
             keys2 = list(rules[key].keys())
 
@@ -73,6 +73,11 @@ for _ in range(1):
             for k in keys2:
                 
                 #updates the key dictionary 
+                #rules[key][k] gets the number of a certain letter that rule produces
+                #multiplying it by how many letters that triggered this rule 
+                # if count = 0 it will add the letter pair into count, otherwise it just increases it as letters can be 
+                #repeated over different rules
+
                 count[k] = count.get(k, 0)+(rules[key][k])*letters[key]
         
 
@@ -82,8 +87,8 @@ for _ in range(1):
 
     #sum variable to count how many letters
     sum = 0
-    
-    #loops through each key in the final key list and adds the value connected to that pair to the sum 
+    keys = list(letters.keys())
+    #loops through each key in the letters dictionary and adds the value connected to that pair to the sum 
     for key in keys:
         sum+=letters[key]
    
