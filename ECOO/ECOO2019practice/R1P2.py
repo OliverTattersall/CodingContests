@@ -1,5 +1,5 @@
 #loops through all 10 test cases
-for _ in range(10):
+for _ in range(1):
 
     first = input().split()
 
@@ -26,7 +26,7 @@ for _ in range(10):
         #for loop to count letters in the rule
         for i in range(len(line[1])):
             temp[line[1][i]] = temp.get(line[1][i], 0)+1
-        
+
         #adds dictionary to rules paired with the letter that triggers this rule
         rules[line[0]] = temp
         #adds the string to rules2 paired with the letter that triggers this rule
@@ -47,13 +47,17 @@ for _ in range(10):
         letters[original[i]] = letters.get(original[i], 0)+1
 
     # print(letters)
+    # print(rules)
+    # print(rules2)
 
     #iterates t times
     for i in range(t):
 
         #applies the rule for the first and last letter, and take the first and last letter of the result
         front = rules2[front][0]
+
         end = rules2[end][-1]
+        #C -> ACB : end = B
 
         #creates list of the keys in the letters dictionary.
         keys = list(letters.keys())

@@ -19,20 +19,20 @@ alth.sort(key = lambda x: int(x[1]))
 # print(alth)
 
 sum = 0
-used = {}
+used = set()
 for i in range(a):
     temp = alth[i]
     if temp[1] in used:
-        if used[temp[1]]==True:
-            continue
+        continue
     jer = jerseys[int(temp[1])-1]
     if sizes[jer]>=sizes[temp[0]]:
         # print(jer, temp)
         if temp[1] not in used:
-            used[temp[1]]=True
+            used.add(temp[1])
             sum+=1
-        elif used[temp[1]]==False:
-            sum+=1
-            used[temp[1]]=True
+        # elif used[temp[1]]==False:
+        #     sum+=1
+        #     used[temp[1]]=True
+    # print(used)
 
 print(sum)
