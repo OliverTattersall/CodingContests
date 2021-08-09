@@ -1,24 +1,27 @@
 import random
 
-def BinSearch(n, lst, count):
+def BinSearch(n, lst, count, i):
 
-    print(lst)
+    
 
     m=len(lst)
+    print(m//2, lst[m//2])
 
     if m>0:
 
         if n>lst[m//2]:
 
-            return BinSearch(n, lst[(m//2)+1 : ], count+1)
+            return BinSearch(n, lst[(m//2)+1 : ], count+1, i)
 
         elif n<lst[m//2]:
 
-            return BinSearch(n, lst[0 : m//2], count+1)
+            return BinSearch(n, lst[0 : m//2], count+1, i)
 
+        elif n==lst[m//2]:
+
+            return lst[m//2], count, i
         else:
-
-            return lst[m//2], count
+            return -1, count
 
     else:
 
@@ -31,4 +34,4 @@ print(lst)
 
 n=int(input())
 
-print(BinSearch(n, lst, 0))
+print(BinSearch(n, lst, 0, 0))

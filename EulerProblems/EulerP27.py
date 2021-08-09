@@ -1,8 +1,5 @@
-primes=[]
-
-
 def SieveOfEratosthenes(n): 
-      
+    primes=[]
     # Create a boolean array "prime[0..n]" and initialize 
     #  all entries it as true. A value in prime[i] will 
     # finally be false if i is Not a prime, else true. 
@@ -31,8 +28,28 @@ def SieveOfEratosthenes(n):
 
 
 
-n = 100
-# print("Following are the prime numbers smaller") 
-# print("than or equal to", n) 
-print(len(SieveOfEratosthenes(n)))
+p = set(SieveOfEratosthenes(1000000))
+# print(p)
+pair=()
+max=0
+for i in range(-999, 1000, 1):
+    for j in range(-999, 1000, 1):
+        count=0
+        if abs(j) in p:
 
+            
+            f = lambda x: x**2 +i*x+j
+
+            k=0
+            n= f(0)
+            while abs(n) in p:
+                count+=1
+                k+=1
+                n=f(k)
+            if count>max:
+                pair=(i,j)
+
+        if (abs(i)==67 and abs(j)==971) or (abs(j)==67 and abs(i)==971):
+            print(count, i, j)
+
+print(pair)
