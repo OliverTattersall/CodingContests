@@ -1,14 +1,25 @@
 import random
 from collections import deque
 
-maze = [[1 for i in range(10)]for _ in range(10)]
+# maze = [[1 for i in range(10)]for _ in range(10)]
+maze= [
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1], 
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1]]
 visited = [[False for _ in range(10)] for _ in range(10)]
 
-
-for i in range(25):
-    x=random.randint(0,9)
-    y=random.randint(0,9)
-    maze[x][y]=0
+# print(maze)
+# for i in range(25):
+#     x=random.randint(0,9)
+#     y=random.randint(0,9)
+#     maze[x][y]=0
 
 
 
