@@ -6,9 +6,9 @@ lst = [i for i in range(3)]
 
 #returns a list of tuples containing n items, where n is length of original list or string
 def permutiter(lst):
-    return list(permutations(list(lst)))
+    return set(permutations(list(lst)))
 
-print(permutiter(lst))
+# print(permutiter("AABBBBBBBBBBBBBBB"))
 
 permuts=[]
 
@@ -24,7 +24,7 @@ def permutationsNoIter(lst, head, tail=""):
 print(permuts)
 
 #returns 2d list with each permutation being broken up into lists. applies yield, which can be used to add create generator objects. 
-def all_perms(elements, lst = []):
+def all_perms(elements, lst2 = []):
 
     if len(elements) <=1:
         # lst.append(elements)
@@ -36,9 +36,9 @@ def all_perms(elements, lst = []):
 
             # print(perm, elements)
             for i in range(len(elements)):
-                lst.append(perm[:i]+elements[0:1]+perm[i:])
+                lst2.append(perm[:i]+elements[0:1]+perm[i:])
                 # print(perm[:i] + elements[0:1]+perm[i:])
                 # yield perm[:i] + elements[0:1] + perm[i:]
-        return lst
+        return lst2
 
 print(list(all_perms(lst, [])))
