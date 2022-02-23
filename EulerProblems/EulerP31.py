@@ -29,12 +29,21 @@ coins.reverse()
 # print(tus)
 
 tus = set()
+visited = set()
+count = [0]
 def solve(n, tu):
-    if n==0:
-        tus.add(tu)
-    for i in range(len(coins)):
-        if n-coins[i]>=0:
-            solve(n-coins[i], tu+(coins[i], ))
+    tu = tuple(sorted(tu))
+    if tu not in visited:
+        visited.add(tu)
+        if n==0:
+            if tu not in tus:
+                tus.add(tuple(sorted(tu)))
+                count[0]+=1
+            
+        for i in range(len(coins)):
+            if n-coins[i]>=0:
+                solve(n-coins[i], tu+(coins[i], ))
 
 solve(200, ())
-print(tus)
+print(count)
+# print(tus)

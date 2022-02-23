@@ -59,4 +59,4 @@ lookup = createTable(lookup, n, arr)
 
 # print(lookup)
 start = time.time()
-print(query(7, 8, lookup, arr))
+print(query(7, 8, lookup, arr), time.time()-start)

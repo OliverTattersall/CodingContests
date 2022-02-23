@@ -26,33 +26,29 @@ def SieveOfEratosthenes(n):
     #print(len(primes))
     return primes
 
+def rotate(str):
+    return str[1:]+str[0]
 
 
-p = set(SieveOfEratosthenes(10000000))
-# print(p)
-pair=()
-max=0
-for i in range(-999, 1000, 1):
-    for j in range(-1000, 1001, 1):
-        count=0
-        if abs(j) in p:
 
-            
-            f = lambda x: x**2 +i*x+j
-
-            k=0
-            n= f(0)
-            while abs(n) in p:
-                count+=1
-                k+=1
-                n=f(k)
-            if count>max:
-                pair=(i,j)
-                max = count
-        # if (abs(i)==67 and abs(j)==971) or (abs(j)==67 and abs(i)==971):
-        #     print(count, i, j)
-
-print(pair)
+primes = SieveOfEratosthenes(1000000)
+setp = set(primes)
 
 
+count = 4
+
+for i in range(11, 1000001, 1):
+    if i in setp:
+        flag = True
+        temp = str(i)
+        for j in range(len(str(i))):
+            temp = rotate(temp)
+            if int(temp) not in setp:
+                flag = False
+                break
+        if flag:
+            count+=1
+
+        
+print(count)
 
